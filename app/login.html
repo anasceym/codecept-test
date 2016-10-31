@@ -1,1 +1,43 @@
-Login
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <style>
+      .invalid-field {
+        border: red 2px solid;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Register / Login</h1>
+
+    <input type="text" name="email"/>
+    <input type="password" name="password"/>
+    <input type="submit" name="submit">
+    <a href="#">Forgot Password</a>
+  </body>
+
+  <script>
+    $(document).ready(function() {
+
+      $('[name=submit]').on('click', function(e) {
+        e.preventDefault();
+
+        if ($('[name=email]').val() == '') {
+          $('[name=email]').focus();
+          $('[name=email]').addClass('invalid-field').css('outline', 'none').after('<span>*Please insert email</span>')
+          return;
+        }
+
+        if ($('[name=email]').val() == 'test@example.com' && $('[name=password]').val() == '123456') {
+          //window.location = '/main.html';
+          alert('Successfully Login');
+          window.location = '/main.html';
+        } else {
+          $('[name=email]').focus();
+          alert('Incorrect email or password')
+        }
+      })
+    });
+  </script>
+</html>
